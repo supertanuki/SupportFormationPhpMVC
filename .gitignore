@@ -1,6 +1,6 @@
-PDFlib-PHP-cookbook/*
-PHPMailer_5.2.0/*
-upload/*
+initiation/PDFlib-PHP-cookbook/*
+initiation/PHPMailer_5.2.0/*
+initiation/upload/*
 
 # exemple de fichiers ignorés
 
