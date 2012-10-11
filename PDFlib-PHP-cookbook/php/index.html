@@ -1,0 +1,273 @@
+<!DOCTYPE HTML><html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head><title>PDFlib PHP Cookbook</title>
+<style type="text/css">
+    body { background-color:#FFFFFF; 
+	color:#000000; 
+	font-family:Arial,sans-serif; 
+    }
+    a {color:#004A8F;}
+    h1 {font-size: 18px;}
+    h2 {font-size: 14px;}
+    .menu-cookbook {background-color:#ffd000;}
+    #content {
+	text-align: left;
+	margin: 0 auto;
+	width: 800px;
+    }
+</style>
+</head>
+<body>
+<div id="content">
+<h1>PDFlib Cookbook (PHP edition)</h2>
+<div class="menu-cookbook"><a href="#block-handling-and-pps">Block Handling and PPS</a>&#x20;&#x7c;&#x20;<a href="#color">Color</a>&#x20;&#x7c;&#x20;<a href="#complex-scripts">Complex Scripts</a>&#x20;&#x7c;&#x20;<a href="#document-interchange">Document Interchange</a>&#x20;&#x7c;&#x20;<a href="#fonts">Fonts</a>&#x20;&#x7c;&#x20;<a href="#general-programming">General Programming</a>&#x20;&#x7c;&#x20;<a href="#geospatial-pdf">Geospatial PDF</a>&#x20;&#x7c;&#x20;<a href="#graphics">Graphics</a>&#x20;&#x7c;&#x20;<a href="#images">Images</a>&#x20;&#x7c;&#x20;<a href="#interactive-elements">Interactive Elements</a>&#x20;&#x7c;&#x20;<a href="#multimedia">Multimedia</a>&#x20;&#x7c;&#x20;<a href="#pagination">Pagination</a>&#x20;&#x7c;&#x20;<a href="#pdfa">PDF/A</a>&#x20;&#x7c;&#x20;<a href="#pdfvt">PDF/VT</a>&#x20;&#x7c;&#x20;<a href="#pdfx">PDF/X</a>&#x20;&#x7c;&#x20;<a href="#pdf-import">PDF Import</a>&#x20;&#x7c;&#x20;<a href="#pdf-on-the-web-server">PDF on the Web Server</a>&#x20;&#x7c;&#x20;<a href="#tables">Tables</a>&#x20;&#x7c;&#x20;<a href="#text-output">Text Output</a></div>
+<h2 id="block-handing-and-pps">Block Handling and PPS</h2>
+<ul>
+<li><a href="blocks/block_below_contents.php">block_below_contents</a></li>
+<li><a href="blocks/business_cards.php">business_cards</a></li>
+<li><a href="blocks/duplicate_block.php">duplicate_block</a></li>
+<li><a href="blocks/fill_converted_formfields.php">fill_converted_formfields</a></li>
+<li><a href="blocks/linked_textblocks.php">linked_textblocks</a></li>
+<li><a href="blocks/nested_blocks.php">nested_blocks</a></li>
+<li><a href="blocks/override_block_rectangle.php">override_block_rectangle</a></li>
+<li><a href="blocks/query_block_color.php">query_block_color</a></li>
+<li><a href="blocks/query_block_properties.php">query_block_properties</a></li>
+<li><a href="blocks/starter_block.php">starter_block</a></li>
+</ul>
+<h2 id="color">Color</h2>
+<ul>
+<li><a href="color/colorAll_for_cropmarks.php">colorAll_for_cropmarks color</a></li>
+<li><a href="color/color_gradient.php">color_gradient</a></li>
+<li><a href="color/iccprofile_to_image.php">iccprofile_to_image</a></li>
+<li><a href="color/recombine_color_channels.php">recombine_color_channels</a></li>
+<li><a href="color/spot_color.php">spot color</a></li>
+<li><a href="color/starter_color.php">starter_color</a></li>
+<li><a href="color/web_colornames.php">web_colornames</a></li>
+</ul>
+<h2 id="complex-scripts">Complex Scripts</h2>
+<ul>
+<li><a href="complex_scripts/arabic_formatting.php">arabic_formatting</a></li>
+<li><a href="complex_scripts/bidi_formatting.php">bidi_formatting</a></li>
+<li><a href="complex_scripts/gaiji_eudc.php">gaiji_eudc</a></li>
+<li><a href="complex_scripts/starter_shaping.php">starter_shaping</a></li>
+</ul>
+<h2 id="document-interchange">Document Interchange</h2>
+<ul>
+<li><a href="interchange/control_nexpress_trays.php">control_nexpress_trays</a></li>
+<li><a href="interchange/embed_xmp.php">embed_xmp</a></li>
+<li><a href="interchange/import_xmp_from_pdf.php">import_xmp_from_pdf</a></li>
+<li><a href="interchange/starter_tagged.php">starter_tagged</a></li>
+<li><a href="interchange/tagged_pdf_with_textflow.php">tagged_pdf_with_textflow</a></li>
+</ul>
+<h2 id="fonts">Fonts</h2>
+<ul>
+<li><a href="fonts/artificial_fontstyles.php">artificial_fontstyles</a></li>
+<li><a href="fonts/barcode_font.php">barcode_font</a></li>
+<li><a href="fonts/character_references.php">character_references</a></li>
+<li><a href="fonts/escape_sequences.php">escape_sequences</a></li>
+<li><a href="fonts/font_info.php">font_info</a></li>
+<li><a href="fonts/font_metrics_info.php">font_metrics_info</a></li>
+<li><a href="fonts/font_resources.php">font_resources</a></li>
+<li><a href="fonts/glyph_availability.php">glyph_availability</a></li>
+<li><a href="fonts/glyph_replacement.php">glyph_replacement</a></li>
+<li><a href="fonts/opentype_feature_tester.php">opentype_feature_tester</a></li>
+<li><a href="fonts/opentype_features_for_cjk.php">opentype_features_for_cjk</a></li>
+<li><a href="fonts/retain_font.php">retain_font</a></li>
+<li><a href="fonts/simulated_fontstyles.php">simulated_fontstyles</a></li>
+<li><a href="fonts/starter_fallback.php">starter_fallback</a></li>
+<li><a href="fonts/starter_opentype.php">starter_opentype</a></li>
+<li><a href="fonts/starter_type3font.php">starter_type3font</a></li>
+<li><a href="fonts/type3_bitmaptext.php">type3_bitmaptext</a></li>
+<li><a href="fonts/type3_rasterlogo.php">type3_rasterlogo</a></li>
+<li><a href="fonts/type3_subsetting.php">type3_subsetting</a></li>
+<li><a href="fonts/type3_turkish_character.php">type3_turkish_character</a></li>
+<li><a href="fonts/type3_vectorlogo.php">type3_vectorlogo</a></li>
+</ul>
+<h2 id="general-programming">General Programming</h2>
+<ul>
+<li><a href="general/aes256_unicode_password.php">aes256_unicode_password</a></li>
+<li><a href="general/error_handling.php">error_handling</a></li>
+<li><a href="general/function_scopes.php">function_scopes</a></li>
+<li><a href="general/initial_view.php">initial_view</a></li>
+<li><a href="general/license_key.php">license_key</a></li>
+<li><a href="general/metric_topdown_coordinates.php">metric_topdown_coordinates</a></li>
+<li><a href="general/permission_settings.php">permission_settings</a></li>
+<li><a href="general/repeated_contents.php">repeated_contents</a></li>
+<li><a href="general/starter_basic.php">starter_basic</a></li>
+<li><a href="general/starter_pvf.php">starter_pvf</a></li>
+</ul>
+<h2 id="geospatial-pdf">Geospatial PDF</h2>
+<ul>
+<li><a href="geospatial/starter_geospatial.php">starter_geospatial</a></li>
+</ul>
+<h2 id="graphics">Graphics</h2>
+<ul>
+<li><a href="graphics/aligned_path_objects.php">aligned_path_objects</a></li>
+<li><a href="graphics/arrows.php">arrows</a></li>
+<li><a href="graphics/arrow_as_path_object.php">arrow_as_path_object</a></li>
+<li><a href="graphics/crop_marks.php">crop_marks</a></li>
+<li><a href="graphics/dashed_lines.php">dashed_lines</a></li>
+<li><a href="graphics/fill_pattern.php">fill_pattern</a></li>
+<li><a href="graphics/fill_rules.php">fill_rules</a></li>
+<li><a href="graphics/hierarchical_layers.php">hierarchical_layers</a></li>
+<li><a href="graphics/layers_and_bookmarks.php">layers_and_bookmarks</a></li>
+<li><a href="graphics/overprinting_text.php">overprinting_text</a></li>
+<li><a href="graphics/path_objects.php">path_objects</a></li>
+<li><a href="graphics/rounded_rectangle.php">rounded_rectangle</a></li>
+<li><a href="graphics/stamp_on_print_layer.php">stamp_on_print_layer</a></li>
+<li><a href="graphics/starter_graphics.php">starter_graphics</a></li>
+<li><a href="graphics/starter_path.php">starter_graphics</a></li>
+<li><a href="graphics/starter_layer.php">starter_layer</a></li>
+<li><a href="graphics/transparent_graphics.php">transparent_graphics</a></li>
+</ul>
+<h2 id="images">Images</h2>
+<ul>
+<li><a href="images/add_opi_info.php">add_opi_info</a></li>
+<li><a href="images/align_text_at_image.php">align_text_at_image</a></li>
+<li><a href="images/alpha_channel.php">alpha_channel</a></li>
+<li><a href="images/center_image_on_card.php">center_image_on_card</a></li>
+<li><a href="images/display_image_partially.php">display_image_partially</a></li>
+<li><a href="images/frame_around_image.php">frame_around_image</a></li>
+<li><a href="images/image_dimensions.php">image_dimensions</a></li>
+<li><a href="images/image_from_url.php">image_from_url</a></li>
+<li><a href="images/image_mask.php">image_mask</a></li>
+<li><a href="images/image_rounded_corners.php">rounded_corners</a></li>
+<li><a href="images/integrated_clipping_path.php">integrated_clipping_path</a></li>
+<li><a href="images/multi_page_tiff.php">multi_page_tiff</a></li>
+<li><a href="images/starter_image.php">starter_image</a></li>
+<li><a href="images/tiling_pattern.php">tiling_pattern</a></li>
+<li><a href="images/transparent_images.php">transparent_images</a></li>
+</ul>
+<h2 id="interactive-elements">Interactive Elements</h2>
+<ul>
+<li><a href="interactive/acrobat_menu_items.php">acrobat_menu_items</a></li>
+<li><a href="interactive/barcode_field.php">barcode_field</a></li>
+<li><a href="interactive/form_and_layers.php">form_and_layers</a></li>
+<li><a href="interactive/form_checkbox.php">form_checkbox</a></li>
+<li><a href="interactive/form_combobox.php">form_combobox</a></li>
+<li><a href="interactive/form_listbox.php">form_listbox</a></li>
+<li><a href="interactive/form_multiline_textfield.php">form_multiline_textfield</a></li>
+<li><a href="interactive/form_pushbutton.php">form_pushbutton</a></li>
+<li><a href="interactive/form_radiobutton.php">form_radiobutton</a></li>
+<li><a href="interactive/form_radiobutton.php">form_radiobutton</a></li>
+<li><a href="interactive/form_tab_order.php">form_tab_order</a></li>
+<li><a href="interactive/form_textfield_fill_with_js.php">form_textfield_fill_with_js</a></li>
+<li><a href="interactive/form_textfield_height.php">form_textfield_height</a></li>
+<li><a href="interactive/form_textfield_input_check.php">form_textfield_input_check</a></li>
+<li><a href="interactive/form_textfield_layout.php">form_textfield_layout</a></li>
+<li><a href="interactive/form_triggers_js_actions.php">form_triggers_js_actions</a></li>
+<li><a href="interactive/link_annotations.php">link_annotations</a></li>
+<li><a href="interactive/movie_annotations.php">movie_annotations</a></li>
+<li><a href="interactive/nested_bookmarks.php">nested_bookmarks</a></li>
+<li><a href="interactive/starter_portfolio.php">starter_portfolio</a></li>
+<li><a href="interactive/triggers_for_javascript_actions.php">triggers_for_javascript_actions</a></li>
+</ul>
+<h2 id="multimedia">Multimedia</h2>
+<ul>
+<li><a href="multimedia/javascript_for_3d_animation.php">javascript_for_3d_animation</a></li>
+<li><a href="multimedia/javascript_for_3d_camera.php">javascript_for_3d_camera</a></li>
+<li><a href="multimedia/starter_3d.php">starter_3d</a></li>
+</ul>
+<h2 id="pagination">Pagination</h2>
+<ul>
+<li><a href="pagination/crop_page.php">crop_page</a></li>
+<li><a href="pagination/reverse_page_order.php">reverse_page_order</a></li>
+<li><a href="pagination/insert_toc.php">insert_toc</a></li>
+<li><a href="pagination/page_sizes.php">page_sizes</a></li>
+<li><a href="pagination/page_x_of_y.php">page_x_of_y</a></li>
+</ul>
+<h2 id="pdfa">PDF/A</h2>
+<ul>
+<li><a href="pdfa/clone_pdfa.php">clone_pdfa</a></li>
+<li><a href="pdfa/images_to_pdfa.php">images_to_pdfa</a></li>
+<li><a href="pdfa/import_pdfa.php">import_pdfa</a></li>
+<li><a href="pdfa/pdfa_extension_schema.php">pdfa_extension_schema</a></li>
+<li><a href="pdfa/pdfa_extension_schema_with_type.php">pdfa_extension_schema_with_type</a></li>
+<li><a href="pdfa/starter_pdfa1b.php">starter_pdfa1b</a></li>
+<li><a href="pdfa/text_to_pdfa.php">text_to_pdfa</a></li>
+<li><a href="pdfa/transparent_stamp_for_pdfa.php">transparent_stamp_for_pdfa</a></li>
+</ul>
+<h2 id="pdfvt">PDF/VT (The PDF/VT samples require the PDFlib VT Edition)</h2>
+<ul>
+<li><a href="pdfvt/starter_pdfvt1.php">starter_pdfvt1</a></li>
+<li><a href="pdfvt/starter_pdfvt2.php">starter_pdfvt2</a></li>
+</ul>
+<h2 id="pdfx">PDF/X</h2>
+<ul>
+<li><a href="pdfx/clone_pdfx.php">clone_pdfa</a></li>
+<li><a href="pdfx/starter_pdfx3.php">starter_pdfx3</a></li>
+<li><a href="pdfx/starter_pdfx4.php">starter_pdfx4</a></li>
+<li><a href="pdfx/starter_pdfx5g.php">starter_pdfx5g</a></li>
+<li><a href="pdfx/import_pdfx.php">import_pdfx</a></li>
+</ul>
+<h2 id="pdf-import">PDF Import</h2>
+<ul>
+<li><a href="pdf_import/clone_page_boxes.php">clone_page_boxes</a></li>
+<li><a href="pdf_import/crop_imported_pages.php">crop_imported_pages</a></li>
+<li><a href="pdf_import/import_in_reverse_order.php">import_in_reverse_order</a></li>
+<li><a href="pdf_import/import_pages_into_layers.php">import_pages_into_layers</a></li>
+<li><a href="pdf_import/starter_pdfmerge.php">starter_pdfmerge</a></li>
+<li><a href="pdf_import/starter_pcos.php">starter_pcos</a></li>
+<li><a href="pdf_import/rotate_pages.php">rotate_pages</a></li>
+<li><a href="pdf_import/stamp_pages.php">stamp_pages</a></li>
+<li><a href="pdf_import/pdfimpose.php">pdfimpose</a></li>
+<li><a href="pdf_import/scale_down_imported_pages.php">scale_down_imported_pages</a></li>
+</ul>
+<h2 id="pdf-on-the-web-server">PDF on the Webserver</h2> <ul>
+<li><a href="webserver/starter_webform.php">starter_webform</a></li>
+</ul>
+<h2 id="tables">Tables</h2>
+<ul>
+<li><a href="table/colorize_cells.php">colorize_cells</a></li>
+<li><a href="table/fit_formfield_into_cell.php">fit_formfield_into_cell</a></li>
+<li><a href="table/mixed_table_contents.php">mixed_table_contents</a></li>
+<li><a href="table/nested_tables.php">nested_tables</a></li>
+<li><a href="table/repeat_cell_contents.php">repeat_cell_contents</a></li>
+<li><a href="table/spread_oversized_table.php">spread_oversized_table</a></li>
+<li><a href="table/spread_text_over_cells.php">spread_text_over_cells</a></li>
+<li><a href="table/starter_table.php">starter_table</a></li>
+<li><a href="table/table_contact_sheet.php">table_contact_sheet</a></li>
+<li><a href="table/table_invoice.php">table_invoice</a></li>
+<li><a href="table/table_rotated_text.php">table_rotated_text</a></li>
+<li><a href="table/table_row_height.php">table_row_height</a></li>
+<li><a href="table/table_schedule.php">table_schedule</a></li>
+<li><a href="table/table_timesheet.php">table_timesheet</a></li>
+<li><a href="table/vertical_text_alignment.php">vertical_text_alignment</a></li>
+</ul>
+<h2 id="text-output">Text Output</h2>
+<ul>
+<li><a href="text_output/create_interactive_index.php">create_interactive_index</a></li>
+<li><a href="text_output/vertical_alignment_in_fitbox.php">vertical_alignment_in_fitbox</a></li>
+<li><a href="text_output/keep_lines_together.php">keep_lines_together</a></li>
+<li><a href="text_output/drop_caps.php">drop_caps</a></li>
+<li><a href="text_output/distance_between_paragraphs.php">distance_between_paragraphs</a></li>
+<li><a href="text_output/avoid_linebreaking.php">avoid_linebreaking</a></li>
+<li><a href="text_output/bulleted_list.php">bulleted_list</a></li>
+<li><a href="text_output/continue_note_after_text.php">continue_note_after_text</a></li>
+<li><a href="text_output/current_text_position.php">current_text_position</a></li>
+<li><a href="text_output/dot_leaders_with_tabs.php">dot_leaders_with_tabs</a></li>
+<li><a href="text_output/footnotes_in_text.php">footnotes_in_text</a></li>
+<li><a href="text_output/image_as_text_fill_color.php">image_as_text_fill_color</a></li>
+<li><a href="text_output/invisible_text.php">invisible_text</a></li>
+<li><a href="text_output/leaders_in_textline.php">leaders_in_textline</a></li>
+<li><a href="text_output/numbered_list.php">numbered_list</a></li>
+<li><a href="text_output/rotated_text.php">rotated_text</a></li>
+<li><a href="text_output/shadowed_text.php">shadowed_text</a></li>
+<li><a href="text_output/simple_stamp.php">simple_stamp</a></li>
+<li><a href="text_output/starter_textflow.php">starter_textflow</a></li>
+<li><a href="text_output/starter_textline.php">starter_textline</a></li>
+<li><a href="text_output/tabstops_in_text.php">tabstops_in_text</a></li>
+<li><a href="text_output/text_as_clipping_path.php">text_as_clipping_path</a></li>
+<li><a href="text_output/text_on_a_path.php">text_on_a_path</a></li>
+<li><a href="text_output/text_on_color.php">text_on_color</a></li>
+<li><a href="text_output/text_with_image_clipping_path.php">text_with_image_clipping_path</a></li>
+<li><a href="text_output/transparent_part_of_text.php">transparent_part_of_text</a></li>
+<li><a href="text_output/transparent_text.php">transparent_text</a></li>
+<li><a href="text_output/underlined_text.php">underlined_text</a></li>
+<li><a href="text_output/weblink_in_text.php">weblink_in_text</a></li>
+<li><a href="text_output/wrap_text_around_images.php">wrap_text_around_images</a></li>
+<li><a href="text_output/wrap_text_around_polygons.php">wrap_text_around_polygons</a></li>
+</ul>
+</div>
+</body>
+</html>
