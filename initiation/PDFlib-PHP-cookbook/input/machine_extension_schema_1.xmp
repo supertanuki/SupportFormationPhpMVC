@@ -1,0 +1,91 @@
+<!-- Copyright 2008 PDFlib GmbH
+     www.pdflib.com
+
+     Specify several XMP entries for inclusion in the generated PDF document.
+     Properties in the following fictitious custom schema are used:
+     
+     Schema name: Foo Machines Schema
+     Schema namespace URI: http://www.foobar.com/ns/machines/1/
+     Preferred schema namespace prefix: fm
+     
+     Properties in this schema and their types:
+     
+     YearOfManufacture: Date     Complete Date according to
+                                 http://www.w3.org/TR/NOTE-datetime
+                                 Various formats are supported, e.g.
+                                 Year (e.g. 2008)
+                                 Year and month (e.g. 2008-01)
+                                 Complete data (e.g. 2008-01-17)
+     MachineName:       Text
+     MachineNumber:     Text
+
+     Since this example uses a schema beyond the set of predefined
+     XMP 2004 schemas it includes a description of the custom schema
+     according to the PDF/A requirements.
+-->
+
+<!-- Several XMP entries in the custom schema -->
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<!-- XMP extension schema container schema for the fm schema -->
+<rdf:Description rdf:about=""
+  xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/"
+  xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#"
+  xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#" >
+
+  <!-- Container for all embedded extension schema descriptions -->
+  <pdfaExtension:schemas>
+    <rdf:Bag>
+      <rdf:li rdf:parseType="Resource">  
+        <!-- Optional description of schema -->
+        <pdfaSchema:schema>Foo Machines Schema</pdfaSchema:schema>
+
+        <!-- Schema namespace URI -->
+        <pdfaSchema:namespaceURI>http://www.foobar.com/ns/machines/1/</pdfaSchema:namespaceURI>
+
+        <!-- Preferred schema namespace prefix -->
+        <pdfaSchema:prefix>fm</pdfaSchema:prefix>
+
+        <!-- Description of schema properties -->
+        <pdfaSchema:property>
+          <rdf:Seq>
+            <rdf:li rdf:parseType="Resource">
+              <pdfaProperty:name>YearOfManufacture</pdfaProperty:name>
+              <pdfaProperty:valueType>Integer</pdfaProperty:valueType>
+              <pdfaProperty:category>external</pdfaProperty:category>
+              <pdfaProperty:description>year of manufacture</pdfaProperty:description>
+            </rdf:li>
+
+            <rdf:li rdf:parseType="Resource">
+              <pdfaProperty:name>MachineName</pdfaProperty:name>
+              <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+              <pdfaProperty:category>external</pdfaProperty:category>
+              <pdfaProperty:description>full product name</pdfaProperty:description>
+            </rdf:li>
+
+            <rdf:li rdf:parseType="Resource">
+              <pdfaProperty:name>MachineNumber</pdfaProperty:name>
+              <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+              <pdfaProperty:category>external</pdfaProperty:category>
+              <pdfaProperty:description>product number</pdfaProperty:description>
+            </rdf:li>
+            
+          </rdf:Seq>
+        </pdfaSchema:property>
+      </rdf:li>
+    </rdf:Bag>
+  </pdfaExtension:schemas>
+</rdf:Description>
+
+<rdf:Description rdf:about=""  xmlns:fm="http://www.foobar.com/ns/machines/1/">
+
+  <fm:YearOfManufacture>1984</fm:YearOfManufacture>  
+
+  <fm:MachineName>Heavy-duty bread slicer</fm:MachineName>
+
+  <fm:MachineNumber>M17 SLK 123TDI</fm:MachineNumber>
+
+</rdf:Description>
+
+</rdf:RDF>
