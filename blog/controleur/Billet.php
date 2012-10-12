@@ -8,12 +8,18 @@ require_once('modele/Billet.php');
 // Charger la classe Commentaire (notre modele)
 require_once('modele/Commentaire.php');
 
-$billet = new Billet();
-$billet->setDatabase( $database );
-
 $commentaire = new Commentaire();
 $commentaire->setDatabase( $database );
-var_dump( "getNbCommentaires = " . $commentaire->getNbCommentaires( $billet_id = 1 ) );
+
+$billet = new Billet();
+$billet->setDatabase( $database );
+$billet->setCommentaireRessource( $commentaire );
+
+// Test du __tostring()
+// echo $billet;
+// exit;
+
+// var_dump( "getNbCommentaires = " . $commentaire->getNbCommentaires( $billet_id = 1 ) );
 
 // doit on afficher un lien retour à la liste (retour page d'accueil)
 $afficher_retour_liste = false;
@@ -22,7 +28,14 @@ $afficher_retour_liste = false;
 if( isset( $_GET['billet'] ) && (int) $_GET['billet'] > 0 )
 {
 	$billets = $billet->getOneBillet( $_GET['billet'] );
+	
+	var_dump( $commentaire->getCommentairesDuBillet( $_GET['billet'] ) );
+	exit;
+	
 	$afficher_retour_liste = true;
+	
+	// Charger la vue
+	require_once('vue/Billet.view.php');
 	
 // Afficher la liste des billets et pagination
 } else {
@@ -36,8 +49,10 @@ if( isset( $_GET['billet'] ) && (int) $_GET['billet'] > 0 )
 
 	// charger les billets
 	$billets = $billet->getBillets( $pagination->fromPagination(), $pagination->byPage );
+	
+	// Charger la vue
+	require_once('vue/Billet.index.php');
 }
 
-// Charger la vue
-require_once('vue/Billet.index.php');
+
 

@@ -1,6 +1,7 @@
 <?php
 class Commentaire {
 	
+	const tableName = 'commentaires';
 	public $database;
 	public $format_date_sql_fr = '%d/%m/%Y à %Hh%i et %ss';
 	
@@ -14,12 +15,12 @@ class Commentaire {
 	{
 		$reqCount = $this->database->prepare('
 			SELECT COUNT(id) AS nb_commentaires
-			FROM commentaires
+			FROM ' . Commentaire::tableName . '
 			WHERE billet_id = :billet_id');
 			
 		$reqCount->bindParam(':billet_id', $billet_id, PDO::PARAM_INT);
 		
-		$reqCount->execute() or die( var_dump( $this->database->errorInfo() ));
+		$reqCount->execute() or die( var_dump( $reqCount->errorInfo() ));
 		if($row = $reqCount->fetch( PDO::FETCH_ASSOC ))
 		{
 			// on retourne le nb de commentaires
@@ -27,28 +28,19 @@ class Commentaire {
 		}
 	}
 	
-	// Retourne un billet selon son ID
-	function getOneBillet( $billet_id )
+	// Retourne tous les commentaires d'un billet selon un ID
+	function getCommentairesDuBillet( $billet_id )
 	{
 		$req = $this->database->prepare('
 			SELECT id,
-				titre,
-				contenu,
-				DATE_FORMAT(date_creation, \''.$this->format_date_sql_fr.'\') AS date_creation_fr
-			FROM billets
-			WHERE id = :billet_id');
-			
+				auteur,
+				message,
+				DATE_FORMAT(date_message, \''.$this->format_date_sql_fr.'\') AS date_message_fr
+			FROM ' . Commentaire::tableName . '
+			WHERE billet_id = :billet_id'
+			);
 		$req->bindParam(':billet_id', $billet_id, PDO::PARAM_INT);
-		
-		$req->execute() or die( var_dump( $this->database->errorInfo() ));
-		
+		$req->execute() or die( var_dump( $req->errorInfo() ));
 		return $req->fetchAll( PDO::FETCH_ASSOC );
 	}
 }
-
-// require_once('../include/bdd.php');
-// $billet = new Billet();
-// $billet->setDatabase( $database );
-// var_dump( $billet->getBillets(0, 10) );
-// var_dump( $billet->getOneBillet( 2 ) );
-

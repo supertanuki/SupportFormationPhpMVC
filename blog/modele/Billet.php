@@ -1,13 +1,25 @@
 <?php
 class Billet {
 	
-	public $database;
-	public $nbbillet = 0;
-	public $format_date_sql_fr = '%d/%m/%Y à %Hh%i et %ss';
+	const tableName = 'billets';
+	protected $database;
+	protected $commentaire;
+	protected $nbbillet = 0;
+	protected $format_date_sql_fr = '%d/%m/%Y à %Hh%i et %ss';
+	
+	function __tostring()
+	{
+		return "Ceci est une instance de la classe Billet";
+	}
 	
 	function setDatabase( $db )
 	{
 		$this->database = $db;
+	}
+	
+	function setCommentaireRessource( $commentaireRessource )
+	{
+		$this->commentaire = $commentaireRessource;
 	}
 	
 	// retourne les billets de blog et paginés
@@ -17,16 +29,25 @@ class Billet {
 				titre,
 				contenu,
 				DATE_FORMAT(date_creation, \''.$this->format_date_sql_fr.'\') AS date_creation_fr
-			FROM billets
+			FROM ' . Billet::tableName . '
 			ORDER BY date_creation DESC
 			LIMIT :from, :byPage');
 			
 		$req->bindParam(':from', $from, PDO::PARAM_INT);
 		$req->bindParam(':byPage', $byPage, PDO::PARAM_INT);
 		
-		$req->execute() or die( var_dump( $this->database->errorInfo() ));
+		$req->execute() or die( var_dump( $req->errorInfo() ));
 		
-		return $req->fetchAll( PDO::FETCH_ASSOC );
+		$billets = $req->fetchAll( PDO::FETCH_ASSOC );
+		
+		foreach($billets as $key => $b)
+		{
+			$billets[ $key ]['nb_commentaires'] = $this->commentaire->getNbCommentaires( $b['id'] );
+			// équivalent à :
+			// $billets[ $key ]['nb_commentaires'] = $this->commentaire->getNbCommentaires( $billets[ $key ]['id'] );
+		}
+		
+		return $billets;
 	}
 	
 	// retourne le nb de billets de blog
@@ -38,8 +59,8 @@ class Billet {
 			// echo "<li>je cherche en base</li>";
 			$reqCount = $this->database->query('
 				SELECT COUNT(id) AS nb_billets
-				FROM billets')
-				or die( var_dump( $this->database->errorInfo() ));
+				FROM ' . Billet::tableName )
+				or die( var_dump( $reqCount->errorInfo() ));
 			if($row = $reqCount->fetch( PDO::FETCH_ASSOC ))
 			{
 				$this->nbbillet = $row['nb_billets'];
@@ -58,14 +79,18 @@ class Billet {
 				titre,
 				contenu,
 				DATE_FORMAT(date_creation, \''.$this->format_date_sql_fr.'\') AS date_creation_fr
-			FROM billets
+			FROM ' . Billet::tableName . '
 			WHERE id = :billet_id');
 			
 		$req->bindParam(':billet_id', $billet_id, PDO::PARAM_INT);
 		
-		$req->execute() or die( var_dump( $this->database->errorInfo() ));
+		$req->execute() or die( var_dump( $req->errorInfo() ));
 		
-		return $req->fetchAll( PDO::FETCH_ASSOC );
+		$billet = $req->fetchAll( PDO::FETCH_ASSOC );
+		
+		$billet[ 0 ]['nb_commentaires'] = $this->commentaire->getNbCommentaires( $billet[ 0 ]['id'] );
+		
+		return $billet;
 	}
 }
 

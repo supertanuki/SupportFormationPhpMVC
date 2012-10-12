@@ -35,6 +35,22 @@ mon_var_dump($montableau);
 
 
 
+$billets = array(
+				0 => array(
+						'id' => 1,
+						'titre' => 'lorem ipsum',
+						'nb_commentaire' => 2
+					),
+				1 => array(
+						'id' => 1,
+						'titre' => 'lorem ipsum',
+						'nb_commentaire' => 0
+					)
+				);
+
+
+
+
 
 
 
