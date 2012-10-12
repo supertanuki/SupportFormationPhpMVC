@@ -3,6 +3,7 @@ class Billet {
 	
 	public $database;
 	public $nbbillet = 0;
+	public $format_date_sql_fr = '%d/%m/%Y à %Hh%i et %ss';
 	
 	function setDatabase( $db )
 	{
@@ -11,12 +12,19 @@ class Billet {
 	
 	// retourne les billets de blog et paginés
 	function getBillets($from, $byPage) {
-		$req = $this->database->query('
-			SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr
+		$req = $this->database->prepare('
+			SELECT id,
+				titre,
+				contenu,
+				DATE_FORMAT(date_creation, \''.$this->format_date_sql_fr.'\') AS date_creation_fr
 			FROM billets
 			ORDER BY date_creation DESC
-			LIMIT ' . $from . ', ' . $byPage)
-			or die( var_dump( $this->database->errorInfo() ));
+			LIMIT :from, :byPage');
+			
+		$req->bindParam(':from', $from, PDO::PARAM_INT);
+		$req->bindParam(':byPage', $byPage, PDO::PARAM_INT);
+		
+		$req->execute() or die( var_dump( $this->database->errorInfo() ));
 		
 		return $req->fetchAll( PDO::FETCH_ASSOC );
 	}
@@ -41,11 +49,29 @@ class Billet {
 		// on retourne le nb de billets
 		return $this->nbbillet;
 	}
+	
+	// Retourne un billet selon son ID
+	function getOneBillet( $billet_id )
+	{
+		$req = $this->database->prepare('
+			SELECT id,
+				titre,
+				contenu,
+				DATE_FORMAT(date_creation, \''.$this->format_date_sql_fr.'\') AS date_creation_fr
+			FROM billets
+			WHERE id = :billet_id');
+			
+		$req->bindParam(':billet_id', $billet_id, PDO::PARAM_INT);
+		
+		$req->execute() or die( var_dump( $this->database->errorInfo() ));
+		
+		return $req->fetchAll( PDO::FETCH_ASSOC );
+	}
 }
 
 // require_once('../include/bdd.php');
 // $billet = new Billet();
 // $billet->setDatabase( $database );
 // var_dump( $billet->getBillets(0, 10) );
-// var_dump( $billet->getNbBillets() );
+// var_dump( $billet->getOneBillet( 2 ) );
 

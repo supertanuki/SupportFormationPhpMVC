@@ -11,7 +11,7 @@
 			foreach($billets as $billet)
 			{
 				?>
-				<h2><?php echo htmlspecialchars( $billet['titre'] ); ?></h2>
+				<h2><a href="?billet=<?php echo $billet['id']; ?>"><?php echo htmlspecialchars( $billet['titre'] ); ?></a></h2>
 				<div>
 					<?php echo nl2br( htmlspecialchars( $billet['contenu'] )); ?>
 				</div>
@@ -26,14 +26,21 @@
 		<?php if( isset($pages) ) { ?>
 			<div class="pagination">
 				<?php foreach ($pages as $key){ ?>
-					<?php if($key['current'] == 1) { ?>
-					<a href="?p=<?php echo $key['p']?>" class="active"><?php echo $key['page']?></a>
-					<?php } else { ?>
-					<a href="?p=<?php echo $key['p']; ?>" class="inactive"><?php echo $key['page']?></a>
+					<?php
+					// page courante
+					if($key['current'] == 1) { ?>
+						<strong style="color:red"><?php echo $key['page']?></strong>
+					<?php
+					// autres pages
+					} else { ?>
+						<a href="?p=<?php echo $key['p']; ?>"><?php echo $key['page']?></a>
 					<?php } ?>
 				<?php } ?>
 			</div>
 		<?php } ?>
 		
+		<?php if( $afficher_retour_liste == true ) { ?>
+			<p><a href="/">Retour à la liste des billets</a></p>
+		<?php } ?>
 	</body>
 </html>
