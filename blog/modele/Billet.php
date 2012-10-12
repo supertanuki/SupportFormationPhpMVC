@@ -88,15 +88,9 @@ class Billet {
 		
 		$billet = $req->fetchAll( PDO::FETCH_ASSOC );
 		
-		$billet[ 0 ]['nb_commentaires'] = $this->commentaire->getNbCommentaires( $billet[ 0 ]['id'] );
+		// si le billet n'existe pas
+		if( ! count( $billet ) ) return false;
 		
 		return $billet;
 	}
 }
-
-// require_once('../include/bdd.php');
-// $billet = new Billet();
-// $billet->setDatabase( $database );
-// var_dump( $billet->getBillets(0, 10) );
-// var_dump( $billet->getOneBillet( 2 ) );
-

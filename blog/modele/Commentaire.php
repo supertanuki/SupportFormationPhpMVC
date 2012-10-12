@@ -43,4 +43,29 @@ class Commentaire {
 		$req->execute() or die( var_dump( $req->errorInfo() ));
 		return $req->fetchAll( PDO::FETCH_ASSOC );
 	}
+	
+	// Insérer un commentaire
+	function setCommentaire( $billet_id, $auteur, $message )
+	{
+		if( isset($billet_id) && isset($auteur) && isset($message)
+			&& $billet_id && $auteur && $message )
+		{
+			$req = $this->database->prepare('
+				INSERT INTO ' . Commentaire::tableName . '
+					( auteur, message, date_message, billet_id )
+				VALUES
+					( :auteur, :message, NOW(), :billet_id )
+				');
+			$req->bindParam(':billet_id', $billet_id, PDO::PARAM_INT);
+			$req->bindParam(':auteur', $auteur, PDO::PARAM_STR);
+			$req->bindParam(':message', $message, PDO::PARAM_STR);
+			
+			$req->execute() or die( var_dump( $req->errorInfo() ));
+			
+			// nb d'enregistrements insérés par la requete (0 ou 1 ici)
+			if( $req->rowCount() ) return true;
+		}
+		
+		return false;
+	}
 }

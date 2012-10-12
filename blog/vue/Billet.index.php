@@ -6,6 +6,10 @@
 		<h1>Mon 1er blog PHP</h1>
 		<hr />
 		
+		<a href="?afficher-commentaires">Afficher les derniers commentaires</a>
+		
+		<hr />
+		
 		<?php
 		if(is_array($billets)) {
 			foreach($billets as $billet)
@@ -43,10 +47,6 @@
 					<?php } ?>
 				<?php } ?>
 			</div>
-		<?php } ?>
-		
-		<?php if( $afficher_retour_liste == true ) { ?>
-			<p><a href="/">Retour à la liste des billets</a></p>
 		<?php } ?>
 	</body>
 </html>
