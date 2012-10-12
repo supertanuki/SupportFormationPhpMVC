@@ -26,10 +26,37 @@ class __TwigTemplate_627e871b1f18500bb0383fd06b7dbe82 extends Twig_Template
 \t\t
 \t\t";
         // line 9
-        if (isset($context["helloworld"])) { $_helloworld_ = $context["helloworld"]; } else { $_helloworld_ = null; }
-        echo twig_escape_filter($this->env, $_helloworld_, "html", null, true);
-        echo "
-\t</body>
+        if (isset($context["comments"])) { $_comments_ = $context["comments"]; } else { $_comments_ = null; }
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($_comments_);
+        $context['_iterated'] = false;
+        foreach ($context['_seq'] as $context["_key"] => $context["commentaire"]) {
+            // line 10
+            echo "\t\t\t<li>
+\t\t\t\t";
+            // line 11
+            if (isset($context["commentaire"])) { $_commentaire_ = $context["commentaire"]; } else { $_commentaire_ = null; }
+            echo twig_escape_filter($this->env, $this->getAttribute($_commentaire_, "auteur"), "html", null, true);
+            echo " :<br />
+\t\t\t\t";
+            // line 12
+            if (isset($context["commentaire"])) { $_commentaire_ = $context["commentaire"]; } else { $_commentaire_ = null; }
+            echo twig_escape_filter($this->env, $this->getAttribute($_commentaire_, "message"), "html", null, true);
+            echo "
+\t\t\t</li>
+\t\t";
+            $context['_iterated'] = true;
+        }
+        if (!$context['_iterated']) {
+            // line 15
+            echo "\t\t\tAucun commentaire n'a été trouvé
+\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['commentaire'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        // line 17
+        echo "\t</body>
 </html>";
     }
 
@@ -45,6 +72,6 @@ class __TwigTemplate_627e871b1f18500bb0383fd06b7dbe82 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  27 => 9,  17 => 1,);
+        return array (  57 => 17,  50 => 15,  41 => 12,  36 => 11,  33 => 10,  27 => 9,  17 => 1,);
     }
 }

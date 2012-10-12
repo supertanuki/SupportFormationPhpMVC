@@ -6,6 +6,13 @@
 		<h1><a href="/">Mon 1er blog PHP</a></h1>
 		<hr />
 		
-		{{ helloworld }}
+		{% for commentaire in comments %}
+			<li>
+				{{ commentaire.auteur }} :<br />
+				{{ commentaire.message }}
+			</li>
+		{% else %}
+			Aucun commentaire n'a été trouvé
+		{% endfor %}
 	</body>
 </html>

@@ -3,7 +3,7 @@ class Commentaire {
 	
 	const tableName = 'commentaires';
 	public $database;
-	public $format_date_sql_fr = '%d/%m/%Y à %Hh%i et %ss';
+	public $format_date_sql_fr = '%d/%m/%Y Ã  %Hh%i et %ss';
 	
 	function setDatabase( $db )
 	{
@@ -44,7 +44,23 @@ class Commentaire {
 		return $req->fetchAll( PDO::FETCH_ASSOC );
 	}
 	
-	// Insérer un commentaire
+	// Retourne les derniers commentaires
+	function getLastCommentaires()
+	{
+		$req = $this->database->query('
+			SELECT id,
+				auteur,
+				message,
+				DATE_FORMAT(date_message, \''.$this->format_date_sql_fr.'\') AS date_message_fr
+			FROM ' . Commentaire::tableName . '
+			ORDER BY date_message ASC
+			LIMIT 10'
+			) or die( var_dump( $req->errorInfo() ));
+			
+		return $req->fetchAll( PDO::FETCH_ASSOC );
+	}
+	
+	// InsÃ©rer un commentaire
 	function setCommentaire( $billet_id, $auteur, $message )
 	{
 		if( isset($billet_id) && isset($auteur) && isset($message)
@@ -62,7 +78,7 @@ class Commentaire {
 			
 			$req->execute() or die( var_dump( $req->errorInfo() ));
 			
-			// nb d'enregistrements insérés par la requete (0 ou 1 ici)
+			// nb d'enregistrements insÃ©rÃ©s par la requete (0 ou 1 ici)
 			if( $req->rowCount() ) return true;
 		}
 		

@@ -15,7 +15,7 @@ $commentaire->setDatabase( $database );
 // instancier un objet billet
 $billet = new Billet();
 $billet->setDatabase( $database );
-// transmettre l'objet commentaire à l'objet billet
+// transmettre l'objet commentaire Ã  l'objet billet
 $billet->setCommentaireRessource( $commentaire );
 
 // Test du __tostring()
@@ -28,7 +28,7 @@ $message_de_service = array();
 // Afficher un billet
 if( isset( $_GET['billet'] ) && (int) $_GET['billet'] > 0 )
 {
-	// Récupérer le billet
+	// RÃ©cupÃ©rer le billet
 	$oneBillet = $billet->getOneBillet( $_GET['billet'] );
 	if( ! $oneBillet )
 	{
@@ -38,17 +38,17 @@ if( isset( $_GET['billet'] ) && (int) $_GET['billet'] > 0 )
 		exit;
 	}
 	
-	// L'utilisateur a t-il posté un commentaire ? Alors, l'insérer
+	// L'utilisateur a t-il postÃ© un commentaire ? Alors, l'insÃ©rer
 	if( isset($_POST['auteur']) && isset($_POST['message']) )
 	{
 		if( $commentaire->setCommentaire( $_GET['billet'], $_POST['auteur'], $_POST['message'] ) )
 		{
-			$message_de_service[] = 'Votre commentaire a bien été propulsé !';
-			$message_de_service[] = 'Il est publié en bas de cette page.';
+			$message_de_service[] = 'Votre commentaire a bien Ã©tÃ© propulsÃ© !';
+			$message_de_service[] = 'Il est publiÃ© en bas de cette page.';
 		}
 	}
 	
-	// Récupérer le array des commentaires de ce billet
+	// RÃ©cupÃ©rer le array des commentaires de ce billet
 	$oneBillet[ 0 ]['commentaires'] = $commentaire->getCommentairesDuBillet( $oneBillet[ 0 ]['id'] );
 	
 	// Charger la vue
@@ -57,7 +57,7 @@ if( isset( $_GET['billet'] ) && (int) $_GET['billet'] > 0 )
 // Afficher la liste des billets et pagination
 } else {
 	
-	// Si p différente d'un entier > 0, alors p = 1
+	// Si p diffÃ©rente d'un entier > 0, alors p = 1
 	if( isset($_GET['p']) && (int) $_GET['p'] == 0) $_GET['p'] = 1;
 	
 	// Charger la classe Pagination

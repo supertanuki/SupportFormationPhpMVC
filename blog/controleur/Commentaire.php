@@ -6,4 +6,12 @@ require_once('modele/Commentaire.php');
 $commentaire = new Commentaire();
 $commentaire->setDatabase( $database );
 
-echo $twig->render('commentaire/Commentaire.list.twig.html', array('helloworld' => 'Hello World !!! Bonjour !!!!'));
+// charger les 10 derniers commentaires
+$comments = $commentaire->getLastCommentaires();
+
+// var_dump($comments);
+
+// charger le template dans le dossier "vue"
+echo $twig->render('commentaire/Commentaire.list.twig.html', array(
+	'comments' => $comments,
+	));
